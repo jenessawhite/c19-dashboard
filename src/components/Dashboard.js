@@ -12,23 +12,23 @@ class Dashboard extends Component {
   componentDidMount() {
     Tabletop.init({
       key: this.props.sheetURL,
-      callback: googleData => {
-        Object.keys(googleData).forEach((key) => {
-          this.setState({
-            data: [
-              {
-                name: key,
-                data: googleData[key].elements
-              },
-              ...this.state.data
-            ]
-          })
-        });
-
-      },
-      simpleSheet: false,
-      // debug: true
+      callback: this.formatData,
+      simpleSheet: false
     })
+  }
+
+  formatData = (googleData, tabletop) => {
+    Object.keys(googleData).forEach((key) => {
+      this.setState({
+        data: [
+          {
+            name: key,
+            data: googleData[key].elements
+          },
+          ...this.state.data
+        ]
+      })
+    });
   }
 
   render() {
