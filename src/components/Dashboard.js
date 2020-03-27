@@ -40,41 +40,39 @@ class Dashboard extends Component {
           <div className="col-12">
             <h1>Dashboard</h1>
             <div className="row">
-              {
-                data.map(item => {
-                  let keys = Object.keys(item.data[0])
+              { data.map(item => {
+                let keys = Object.keys(item.data[0])
 
-                  return (
-                    <div className="col-12" key={item.name}>
-                      <div className="card">
-                        <div className="card-body">
-                          <h4 className="card-title">{item.name}</h4>
-                        </div>
-                        <table className="table">
-                          <thead>
-                            <tr>
-                            { keys.map(title => (
-                              <th scope="col" key={title}>{title}</th>
-                            ))}
-                            </tr>
-                          </thead>
-
-                          <tbody>
-                          { item.data.map((values, key) => (
-                            <tr key={key}>
-                              { Object.values(values).map((value, key) => (
-                                <td key={key}>{value}</td>
-                              ))}
-                            </tr>
-                          ))}
-                          </tbody>
-                        </table>
-
+                return (
+                  <div className="col-12" key={item.name}>
+                    <div className="card">
+                      <div className="card-body">
+                        <h4 className="card-title">{item.name}</h4>
                       </div>
+                      <table className="table">
+                        <thead>
+                          <tr>
+                          { keys.map(title => (
+                            <th scope="col" key={title}>{title}</th>
+                          ))}
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                        { item.data.map((values, key) => (
+                          <tr key={key}>
+                            { Object.values(values).map((value, key) => (
+                              <td key={key}>{value}</td>
+                            ))}
+                          </tr>
+                        ))}
+                        </tbody>
+                      </table>
+
                     </div>
-                  )
-                })
-              }
+                  </div>
+                )
+              })}
             </div>
           </div>
         </div>
