@@ -13,19 +13,36 @@
   }
 }
 
+body {
+  background-color: #201A32;
+  color: #FAFAFF;
+}
+
 header {
-  background-color: #282c34;
+  background-color: #151221;
   height: 75px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+a {
+  color: #FFBF00;
+}
+
+.card {
+  background-color: #342E44;
+  color: #FAFAFF;
+}
+
+.card-title {
+  color: #EBE3FF;
+  text-align: left;
+}
+
+.table {
+  color: #FAFAFF;
 }
 
 @keyframes App-logo-spin {
