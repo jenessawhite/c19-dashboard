@@ -41,7 +41,7 @@ class Dashboard extends Component {
           <div className="col-12">
             <h1>Dashboard</h1>
             <div className="row">
-              {data.map(item => {
+              {data.map((item, key) => {
                 let total = item.data.reduce((prev, curr) => {
                   return prev + Number(curr['Total']);
                 }, 0);
@@ -72,18 +72,16 @@ class Dashboard extends Component {
                 }
 
                 return (
-                  <div className="col-3">
+                  <div className="col-3" key={item.name+key}>
                     <div className="card generl-card p-2">
                       <div className="card-body">
                         <div className="card-title text-xl">
                           {item.name}{` `}<i className={icon}></i>
                         </div>
 
-                        <p class="card-text text-left">
-                          <div className="total">
-                            {total}{` `}
-                            <span>{descriptor}</span>
-                          </div>
+                        <p className="card-text text-left total">
+                          {total}{` `}
+                          <span>{descriptor}</span>
                         </p>
                       </div>
                     </div>
@@ -96,7 +94,7 @@ class Dashboard extends Component {
               {data.map(item => {
                 let keys = Object.keys(item.data[0])
 
-                return (<Section name={item.name} data={item.data} keys={keys} />)
+                return (<Section key={item.name} name={item.name} data={item.data} keys={keys} />)
               })}
             </div>
           </div>
