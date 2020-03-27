@@ -31,6 +31,10 @@ a {
   color: #FFBF00;
 }
 
+a:hover {
+  color: #FF8800;
+}
+
 .card {
   background-color: #342E44;
   color: #FAFAFF;
@@ -39,6 +43,26 @@ a {
 .card-title {
   color: #EBE3FF;
   text-align: left;
+}
+
+.generl-card .card-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.text-xl {
+  font-size: 20px;
+}
+
+.total {
+  font-size: 36px;
+  font-weight: 500;
+}
+
+.total span {
+  font-size: 14px;
+  font-weight: 300;
 }
 
 .table {
