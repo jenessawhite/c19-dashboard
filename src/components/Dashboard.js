@@ -38,9 +38,9 @@ class Dashboard extends Component {
     return (
       <div className="container py-lg-3">
         <div className="row">
-          <div className="col-12">
+          <div className="col-12 py-3">
             <h1>Dashboard</h1>
-            <div className="row">
+            <div className="row mt-3">
               {data.map((item, key) => {
                 let total = item.data.reduce((prev, curr) => {
                   return prev + Number(curr['Total']);
@@ -72,7 +72,7 @@ class Dashboard extends Component {
                 }
 
                 return (
-                  <div className="col-3" key={item.name+key}>
+                  <div className="col-md-3" key={item.name+key}>
                     <div className="card generl-card p-2">
                       <div className="card-body">
                         <div className="card-title text-xl">

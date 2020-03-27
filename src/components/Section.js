@@ -4,7 +4,7 @@ class Section extends Component {
   render() {
     const { name, data, keys } = this.props;
     return (
-      <div className="col-6 my-2" key={name}>
+      <div className="col-md-6 my-2" key={name}>
         <div className="card">
           <div className="card-body">
             <h4 className="card-title">{name}</h4>
