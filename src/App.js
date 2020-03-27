@@ -1,5 +1,4 @@
 import React from 'react';
-import config from './config';
 import Header from "./components/Header";
 import Dashboard from "./components/Dashboard";
 import './App.css';
@@ -9,7 +8,7 @@ function App() {
     <div className="App">
       <Header/>
 
-      <Dashboard sheetURL={config.spreadsheetLink} />
+      <Dashboard sheetURL={process.env.REACT_APP_SPREADSHEET_URL} />
     </div>
   );
 }
