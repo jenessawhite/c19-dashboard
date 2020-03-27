@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Tabletop from 'tabletop';
+import Section from './Section';
 
 class Dashboard extends Component {
   constructor() {
@@ -40,38 +41,62 @@ class Dashboard extends Component {
           <div className="col-12">
             <h1>Dashboard</h1>
             <div className="row">
-              { data.map(item => {
-                let keys = Object.keys(item.data[0])
+              {data.map(item => {
+                let total = item.data.reduce((prev, curr) => {
+                  return prev + Number(curr['Total']);
+                }, 0);
+
+                let descriptor;
+                let icon;
+
+                switch (item.name) {
+                  case 'Activities':
+                    descriptor = 'Completed'
+                    icon = 'fas fa-tv'
+                    break;
+                  case 'Fitness':
+                    descriptor = 'workouts'
+                    icon = 'fas fa-dumbbell'
+                    break;
+                  case 'Games':
+                    descriptor = 'Games Played'
+                    icon = 'fas fa-dice'
+                    break;
+                  case 'Puzzles':
+                    descriptor = 'Pieces'
+                    icon = 'fas fa-puzzle-piece'
+                    break;
+                  default:
+                    descriptor = ''
+                    icon = ''
+                }
 
                 return (
-                  <div className="col-12" key={item.name}>
-                    <div className="card">
+                  <div className="col-3">
+                    <div className="card generl-card p-2">
                       <div className="card-body">
-                        <h4 className="card-title">{item.name}</h4>
+                        <div className="card-title text-xl">
+                          {item.name}{` `}<i className={icon}></i>
+                        </div>
+
+                        <p class="card-text text-left">
+                          <div className="total">
+                            {total}{` `}
+                            <span>{descriptor}</span>
+                          </div>
+                        </p>
                       </div>
-                      <table className="table">
-                        <thead>
-                          <tr>
-                          { keys.map(title => (
-                            <th scope="col" key={title}>{title}</th>
-                          ))}
-                          </tr>
-                        </thead>
-
-                        <tbody>
-                        { item.data.map((values, key) => (
-                          <tr key={key}>
-                            { Object.values(values).map((value, key) => (
-                              <td key={key}>{value}</td>
-                            ))}
-                          </tr>
-                        ))}
-                        </tbody>
-                      </table>
-
                     </div>
+                    
                   </div>
                 )
+              })}
+            </div>
+            <div className="row">
+              {data.map(item => {
+                let keys = Object.keys(item.data[0])
+
+                return (<Section name={item.name} data={item.data} keys={keys} />)
               })}
             </div>
           </div>
